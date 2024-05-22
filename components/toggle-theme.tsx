@@ -1,14 +1,12 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useThemeContext } from './theme-context';
-
 
 const THEMES = { DARK: 'dark', LIGHT: 'light' };
 const { DARK, LIGHT } = THEMES;
 
 export default function ThemeToggle() {
-  const { theme, setTheme } = useThemeContext();
+  const { theme, setTheme } = useTheme();
 
   const handleThemeChange = () => {
     return theme === DARK ? setTheme(LIGHT) : setTheme(DARK);
