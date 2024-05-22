@@ -1,7 +1,28 @@
+/**
+1. Root Layout:
+The Theme component is wrapped around the children prop in the RootLayout component. 
+This ensures that all the components within the RootLayout can access the theme context provided by
+the ThemeProvider.
+
+2. ThemeProvider:
+The ThemeProvider component uses the next-themes library to provide a context for managing the
+theme (light or dark). 
+It sets the attribute to "class", which means it will add the class attribute to
+the HTML element to reflect the current theme.
+
+3. Theme Toggle:
+The ThemeToggle component uses the useTheme hook to access the current theme and the function to
+change the theme.
+The handleThemeChange function toggles the theme between light and dark.
+The component's UI includes a checkbox and labels that allow the user to switch between light and
+dark modes. The current theme is reflected by the checkbox state and the label text.
+ */
+
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+//
 import Theme from './theme-Provider';
 // import { createContext } from 'react';
 
@@ -26,6 +47,7 @@ export default function RootLayout({
         <h1 className="dark:text-gray-100 dark:bg-gray-700 px-6 py-2 bg-indigo-300 border-b-2 border-indigo-600 text-center text-2xl">
           Dark Mode App
         </h1>
+        {/*PASSING DOWN SERVER COMPONENT AS PROP TO CLIENT COMPONENT */}
         <Theme>{children}</Theme>
       </body>
     </html>
